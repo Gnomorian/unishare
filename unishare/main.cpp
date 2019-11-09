@@ -2,8 +2,13 @@
 #include "application.h"
 #include "errors.h"
 
+ErrorHandler* ErrorHandler::instance = nullptr;
+
 int main(int argc, char* args[])
 {
+	ErrorHandler::instance = new ErrorHandler;
+	HeapGuard<ErrorHandler> errorHandlerGuard(ErrorHandler::instance);
+
 	Application* app = nullptr;
 	if (argc > 1 && strcmp(args[1], "server") == 0)
 		app = new UnishareServerApp();
@@ -14,6 +19,6 @@ int main(int argc, char* args[])
 
 	const int result = app->run();
 	if(result != US_OK)
-		errorHandler.printCallstack();
+		ErrorHandler::instance->printCallstack();
 	return result;
 }

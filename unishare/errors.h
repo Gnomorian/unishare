@@ -6,7 +6,7 @@
 #include <sstream>
 #include <iostream>
 
-#define ADD_ERROR_DETAILS(result) addErrorCallstack(result, __FUNCTION__, __LINE__, __FILE__)
+#define ADD_ERROR_DETAILS(result) ErrorHandler::instance->addErrorCallstack(result, __FUNCTION__, __LINE__, __FILE__)
 #define CHECK_RESULT if(result != US_OK) return ADD_ERROR_DETAILS(result)
 
 enum errorCode
@@ -65,11 +65,13 @@ struct ErrorEntry
 	const char* supplementalText;
 };
 
-static class ErrorHandler
+class ErrorHandler
 {
 	std::stack<ErrorEntry> callstack;
 	std::ostringstream stream;
 public:
+	static ErrorHandler* instance;
+
 	ErrorHandler()
 	{
 		setupErrorText();
@@ -96,22 +98,22 @@ public:
 		stream.clear();
 	}
 
-	void addCallstackEntry(ErrorEntry& entry) { callstack.push(entry); }
+	/*
+		intended to build a c++ callstack for when we get some sort of exception that we can then print
+	*/
+	int addErrorCallstack(int errorCode, const char* function, unsigned line, const char* file, const char* supplemental = nullptr)
+	{
+		ErrorEntry entry;
+		entry.errorCode = errorCode;
+		entry.function = function;
+		entry.file = file;
+		entry.line = line;
+		entry.supplementalText = supplemental;
+		instance->addCallstackEntry(entry);
 
-} errorHandler;
+		return errorCode;
+	}
 
-/*
-	intended to build a c++ callstack for when we get some sort of exception that we can then print
-*/
-inline int addErrorCallstack(int errorCode, const char* function, unsigned line, const char* file, const char* supplemental = nullptr)
-{
-	ErrorEntry entry;
-	entry.errorCode = errorCode;
-	entry.function = function;
-	entry.file = file;
-	entry.line = line;
-	entry.supplementalText = supplemental;
-	errorHandler.addCallstackEntry(entry);
+	void addCallstackEntry(ErrorEntry entry) { callstack.push(entry); }
 
-	return errorCode;
-}
+};

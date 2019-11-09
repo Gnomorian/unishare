@@ -1,7 +1,7 @@
 #include "application.h"
 #include "errors.h"
 
-#define HOST "0.0.0.0"
+#define HOST "localhost"
 #define PORT "8080"
 
 int UnishareClientApp::run()

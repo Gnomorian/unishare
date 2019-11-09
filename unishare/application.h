@@ -15,6 +15,7 @@ public:
 
 class UnishareServerApp : public Application
 {
+	unishare::net::ServerSocket socket;
 public:
 	UnishareServerApp() {}
 	~UnishareServerApp() {}
