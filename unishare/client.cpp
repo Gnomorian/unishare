@@ -15,7 +15,7 @@ USError UnishareClientApp::init()
 	catch (const std::out_of_range & oor)
 	{
 		std::cout << oor.what() << std::endl;
-		std::cout << "settings client:host or client:port is missing!" << std::endl;
+		std::cout << "settings is missing an option!" << std::endl;
 		std::cout << "settings dump:" << std::endl;
 		settings->print();
 	}

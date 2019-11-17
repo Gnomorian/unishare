@@ -4,6 +4,7 @@
 #include "net.hpp"
 #include <vector>
 #include "settings.hpp"
+#include "filemanager.hpp"
 
 class Application
 {
@@ -41,8 +42,9 @@ class UnishareServerApp : public Application
 {
 	Socket socket;
 	std::vector<Socket*> clients;
+	FileManager* fileManager;
 public:
-	UnishareServerApp(Settings* settings) : Application(settings) {};
+	UnishareServerApp(Settings* settings) : Application(settings), fileManager(nullptr) {};
 	~UnishareServerApp() = default;
 
 	USError init() override;
