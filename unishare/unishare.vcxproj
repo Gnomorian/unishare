@@ -123,17 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="client.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="usclientapp.cpp" />
-    <ClCompile Include="usclientsocket.cpp" />
-    <ClCompile Include="usserverapp.cpp" />
-    <ClCompile Include="usserversocket.cpp" />
+    <ClCompile Include="mbedsocket.cpp" />
+    <ClCompile Include="server.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="application.h" />
-    <ClInclude Include="errors.h" />
-    <ClInclude Include="net.h" />
-    <ClInclude Include="unishare.h" />
+    <ClInclude Include="app.hpp" />
+    <ClInclude Include="net.hpp" />
+    <ClInclude Include="unishare.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

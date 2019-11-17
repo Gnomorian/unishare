@@ -18,30 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="usserverapp.cpp">
+    <ClCompile Include="server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="usclientapp.cpp">
+    <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="usserversocket.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="usclientsocket.cpp">
+    <ClCompile Include="mbedsocket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="application.h">
+    <ClInclude Include="app.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="unishare.h">
+    <ClInclude Include="net.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="net.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="errors.h">
+    <ClInclude Include="unishare.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
