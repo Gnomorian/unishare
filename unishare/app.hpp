@@ -3,13 +3,15 @@
 #include "unishare.hpp"
 #include "net.hpp"
 #include <vector>
+#include "settings.hpp"
 
 class Application
 {
 protected:
 	bool running;
+	Settings* settings;
 public:
-	Application() : running(true) {}
+	Application(Settings* settings) : running(true), settings(settings) {}
 
 	virtual USError init() = 0;
 	virtual USError update() = 0;
@@ -28,7 +30,7 @@ class UnishareClientApp : public Application
 {
 	Socket socket;
 public:
-	UnishareClientApp() = default;
+	UnishareClientApp(Settings* settings) : Application(settings) {}
 	~UnishareClientApp() = default;
 
 	USError init() override;
@@ -40,7 +42,7 @@ class UnishareServerApp : public Application
 	Socket socket;
 	std::vector<Socket*> clients;
 public:
-	UnishareServerApp() = default;
+	UnishareServerApp(Settings* settings) : Application(settings) {};
 	~UnishareServerApp() = default;
 
 	USError init() override;

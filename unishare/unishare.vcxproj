@@ -127,10 +127,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mbedsocket.cpp" />
     <ClCompile Include="server.cpp" />
+    <ClCompile Include="settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.hpp" />
     <ClInclude Include="net.hpp" />
+    <ClInclude Include="settings.hpp" />
     <ClInclude Include="unishare.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

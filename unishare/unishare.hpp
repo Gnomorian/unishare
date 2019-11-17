@@ -5,7 +5,7 @@ enum USError
 	OK,
 	ApplicationDone,
 	Timeout,
-	Unknown
+	UnknownError
 };
 
 #define CHECK_RESULT if(result != OK) return result

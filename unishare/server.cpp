@@ -1,12 +1,23 @@
 #include "app.hpp"
 #include <iostream>
+#include "settings.hpp"
 
 USError UnishareServerApp::init()
 {
 	USError result = socket.init();
 	CHECK_RESULT;
 
-	socket.set("localhost", "1234");
+	try
+	{
+		socket.set(settings->settings.at("server:host"), settings->settings.at("server:port"));
+	}
+	catch (const std::out_of_range & oor)
+	{
+		std::cout << oor.what() << std::endl;
+		std::cout << "settings server:host or server:port is missing!" << std::endl;
+		std::cout << "settings dump:" << std::endl;
+		settings->print();
+	}
 
 	return socket.bind();
 }
