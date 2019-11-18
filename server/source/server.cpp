@@ -27,20 +27,25 @@ USError UnishareServerApp::init()
 	return socket.bind();
 }
 
+USError UnishareServerApp::acceptNewClient()
+{
+	Socket* remote = new Socket;
+	HeapGuard<Socket> g(remote);
+
+	USError result = socket.accpet(*remote);
+	CHECK_RESULT;
+
+	clients.emplace_back(remote);
+
+	g.emancipate();
+}
+
 USError UnishareServerApp::update()
 {
-	Socket remote;
-	USError result = socket.accpet(remote);
-	CHECK_RESULT;
+	// TODO: this needs to be on a seperate thread as its permernently blocking.
+	acceptNewClient();
 
-	std::string data;
-	result = remote.recieve(data);
-	CHECK_RESULT;
 
-	std::cout << "Client Said: " << data << std::endl;
-
-	result = remote.send("Hello client, im the server!");
-	CHECK_RESULT;
 
 	return ApplicationDone;
 }

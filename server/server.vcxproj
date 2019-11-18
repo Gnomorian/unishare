@@ -135,6 +135,9 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\server.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\unishare.hpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "settings.hpp"
+#include "dialog.hpp"
 
 USError UnishareClientApp::init()
 {
@@ -35,4 +36,12 @@ USError UnishareClientApp::update()
 	std::cout << "Server Said: " << data << std::endl;
 
 	return ApplicationDone;
+}
+
+USError UnishareClientApp::authenticate()
+{
+	LoginDialog dialog;
+	dialog.show();
+
+	return OK;
 }

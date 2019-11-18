@@ -18,6 +18,7 @@ class DllExport SocketBase
 protected:
 	std::string host;
 	std::string port;
+	bool blocking;
 public:
 	virtual USError init()								= 0;
 	virtual USError free()								= 0;

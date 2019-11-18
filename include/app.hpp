@@ -36,6 +36,7 @@ public:
 
 	USError init() override;
 	USError update() override;
+	USError authenticate();
 };
 
 class UnishareServerApp : public Application
@@ -49,4 +50,6 @@ public:
 
 	USError init() override;
 	USError update() override;
+
+	USError acceptNewClient();
 };
