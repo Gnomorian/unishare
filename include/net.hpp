@@ -1,8 +1,9 @@
 #pragma once
 
-#include <mbedtls/net_sockets.h>
+#define UNISHARE_COMMON
 #include "unishare.hpp"
 #include <string>
+#include <mbedtls/net_sockets.h>
 
 class SocketBase;
 class MbedSocket;
@@ -12,7 +13,7 @@ typedef MbedSocket Socket;
 
 typedef SocketBase SocketProxy;
 
-class SocketBase
+class DllExport SocketBase
 {
 protected:
 	std::string host;
@@ -34,7 +35,7 @@ public:
 	}
 };
 
-class MbedSocket : public SocketBase
+class DllExport MbedSocket : public SocketBase
 {	
 protected:
 	mbedtls_net_context context;

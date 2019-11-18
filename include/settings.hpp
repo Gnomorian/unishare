@@ -5,7 +5,7 @@
 #include <map>
 #include <iostream>
 
-class Settings
+class DllExport Settings
 {
 	// optional [category] and option = result
 	const char* regexString = R"((\[([^\[\]]+)\])?[\s]?(([^\[][\S]+)\s+=\s+(\S+)))";

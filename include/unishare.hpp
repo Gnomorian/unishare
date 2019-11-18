@@ -1,5 +1,13 @@
 #pragma once
 
+#ifdef UNISHARE_COMMON
+#define DllExport __declspec(dllexport)
+#else
+#define DllExport __declspec(dllimport)
+#endif // UNISHARE_COMMON
+
+#define API extern "C"
+
 enum USError
 {
 	OK,

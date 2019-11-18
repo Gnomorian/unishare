@@ -1,3 +1,4 @@
+#define UNISHARE_COMMON
 #include "settings.hpp"
 #include <regex>
 #include <iostream>
