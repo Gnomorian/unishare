@@ -8,7 +8,7 @@
 class DllExport Settings
 {
 	// optional [category] and option = result
-	const char* regexString = R"((\[([^\[\]]+)\])?[\s]?(([^\[][\S]+)\s+=\s+(\S+)))";
+	const char* regexString = R"((\[([^\[\]]+)\])?[\s]*(([\S]+[^\[][\S]+)\s*=\s*(\S+)))";
 	std::string fileName;
 public:
 	std::map<std::string, std::string> settings;
